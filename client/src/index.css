@@ -9,6 +9,8 @@
 /* font-family: 'Poppins', sans-serif; */
 /* font-family: 'Playfair Display', serif; */
 
+
+/* video = https://www.youtube.com/watch?v=47kx_8yAA64&list=PLuHGmgpyHfRzhGkSUfY0vpi67X64g0mXB&index=9 */
 /* //navbar css */
 .navbar {
   font-family: "Poppins", sans-serif;
@@ -98,3 +100,20 @@
   align-items: center;
   justify-content: center;
 }
+
+
+/* ========================================= */
+/* =========Register ========= */
+
+.Register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ height: 55vh;
+ flex-direction:  column;
+}
+
+
+
+
+
