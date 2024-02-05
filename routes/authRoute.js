@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-    registerController, loginController, testController
+    registerController, loginController, testController, forgotPasswordController
     
   } from "../controllers/authController.js";
  import { isAdmin, requireSignIn } from '../middlewares/authMiddleware.js';
@@ -23,6 +23,17 @@ router.post('/login',loginController)
 //http://localhost:8080/api/v1/auth/test
 router.get('/test',requireSignIn,isAdmin, testController)
 
+
+//video 13
+//protected route  auth
+router.get('/user-auth',requireSignIn, (req,res) => {
+  res.status(200).send({ok:true});
+});
+
+
+// video 14
+// forgot password || POST
+router.post('/forgot-password', forgotPasswordController);
 
 
 
