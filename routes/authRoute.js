@@ -25,8 +25,14 @@ router.get('/test',requireSignIn,isAdmin, testController)
 
 
 //video 13
-//protected route  auth
+// normal users - protected route  auth
 router.get('/user-auth',requireSignIn, (req,res) => {
+  res.status(200).send({ok:true});
+});
+
+
+// admin protected route  auth
+router.get('/admin-auth',requireSignIn,isAdmin, (req,res) => {
   res.status(200).send({ok:true});
 });
 
