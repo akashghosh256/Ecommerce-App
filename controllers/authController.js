@@ -45,7 +45,7 @@ export const registerController = async (req, res) => {
       phone,
       address,
       password: hashedPassword,
-      answer
+      answer,
     }).save();
 
     res.status(201).send({
@@ -107,8 +107,9 @@ export const loginController = async (req, res) => {
         name: user.name,
         email: user.email,
         phone: user.phone,
-        adddress: user.address,
-        answer:user.answer,
+        address: user.address,
+        answer: user.answer,
+        role:user.role,
       },
       token,
     });
@@ -136,7 +137,7 @@ export const forgotPasswordController = async (req, res) => {
       res.status(400).send({ message: "newPassword is required" });
     }
     // checking email and answer
-    const user = await userModel.findOne({email,answer});
+    const user = await userModel.findOne({ email, answer });
 
     if (!user) {
       return res.status(404).send({
@@ -145,12 +146,11 @@ export const forgotPasswordController = async (req, res) => {
       });
     }
     const hashed = await hashPassword(newPassword);
-    await userModel.findByIdAndUpdate(user._id, {password:hashed});
-  res.status(200).send({
-    success:true,
-    message:"Password reset Successfully"
-  });
-  
+    await userModel.findByIdAndUpdate(user._id, { password: hashed });
+    res.status(200).send({
+      success: true,
+      message: "Password reset Successfully",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({

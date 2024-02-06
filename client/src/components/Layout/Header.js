@@ -4,6 +4,7 @@ import { GiShoppingBag } from "react-icons/gi";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 
+
 const Header = () => {
   const [auth,setAuth] = useAuth();
   const handleLogout = () => {
@@ -67,7 +68,9 @@ const Header = () => {
 
   </NavLink>
   <ul className="dropdown-menu">
-    <li><NavLink className="dropdown-item" to="/dashboard">dashboard</NavLink></li>
+    <li><NavLink className="dropdown-item" to={
+      `/dashboard/${auth?.user?.role === 1 ? 'admin' : 'user'}`
+      }>dashboard</NavLink></li>
 <li>
   <NavLink   onClick={handleLogout} to="/login" className="nav-link">
                   Logout

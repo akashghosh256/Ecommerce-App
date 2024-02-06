@@ -11,6 +11,7 @@ export default function AdminRoute(){
 
     useEffect(() => {
         const authCheck = async() => {
+            try{
            const res = await axios.get('/api/v1/auth/admin-auth');
            
           if(res.data.ok){
@@ -18,12 +19,22 @@ export default function AdminRoute(){
           }else{
             setOk(false);
           }
+        }catch (error) {
+            if (error.response && error.response.status === 401) {
+                // Handle 401 error here, e.g., redirect to an unauthorized page or show a message.
+                // Set the ok response to false if any error
+                setOk(false);
+            } else {
+                console.error(error);
+            }
+        }
+
         };
            
         
      if(auth?.token) authCheck();
       },[auth?.token]);
-    return ok ? <Outlet/> :<Spinner/>;
+    return ok ? <Outlet/> :<Spinner path=""/>;
 }
 
 
