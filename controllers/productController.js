@@ -7,7 +7,7 @@ export const createProductController = async (req, res) => {
     const { name, description, price, category, quantity, shipping } =
       req.fields;
     const { photo } = req.files;
-    //alidation
+    //validation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
@@ -46,6 +46,7 @@ export const createProductController = async (req, res) => {
   }
 };
 
+//video 17 23:07 / 39:33
 //get all products
 export const getProductController = async (req, res) => {
   try {
@@ -75,7 +76,7 @@ export const getSingleProductController = async (req, res) => {
   try {
     const product = await productModel
       .findOne({ slug: req.params.slug })
-      .select("-photo")
+      .select("-photo")    //removing photo before rendering data
       .populate("category");
     res.status(200).send({
       success: true,
@@ -92,7 +93,8 @@ export const getSingleProductController = async (req, res) => {
   }
 };
 
-// get photo
+// get photo of a product
+// http://localhost:8080/api/v1/product/product-photo/65c29dff26574393e2de18e0
 export const productPhotoController = async (req, res) => {
   try {
     const product = await productModel.findById(req.params.pid).select("photo");
@@ -111,6 +113,7 @@ export const productPhotoController = async (req, res) => {
 };
 
 //delete controller
+//http://localhost:8080/api/v1/product/product/65c29dff26574393e2de18e0
 export const deleteProductController = async (req, res) => {
   try {
     await productModel.findByIdAndDelete(req.params.pid).select("-photo");
@@ -128,13 +131,13 @@ export const deleteProductController = async (req, res) => {
   }
 };
 
-//upate producta
+//upate product
 export const updateProductController = async (req, res) => {
   try {
     const { name, description, price, category, quantity, shipping } =
       req.fields;
     const { photo } = req.files;
-    //alidation
+    //validationnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });

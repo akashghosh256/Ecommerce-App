@@ -7,6 +7,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 import cors from "cors";
 import categoryRoutes from "./routes/categoryRoutes.js";
+import productRoutes from './routes/productRoutes.js';
 /*
 register = http://localhost:8080/api/v1/auth/register
 
@@ -29,6 +30,8 @@ app.use(morgan("dev"));
 //routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
+app.use("/api/v1/product", productRoutes);
+
 
 // rest api
 app.get("/", (req, res) => {
