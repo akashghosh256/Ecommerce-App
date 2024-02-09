@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-    registerController, loginController, testController, forgotPasswordController
+    registerController, loginController, testController, forgotPasswordController, updateProfileController
     
   } from "../controllers/authController.js";
  import { isAdmin, requireSignIn } from '../middlewares/authMiddleware.js';
@@ -40,6 +40,10 @@ router.get('/admin-auth',requireSignIn,isAdmin, (req,res) => {
 // video 14
 // forgot password || POST
 router.post('/forgot-password', forgotPasswordController);
+
+
+//update profile video 25
+router.put('/profile', requireSignIn, updateProfileController)
 
 
 
