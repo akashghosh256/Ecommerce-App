@@ -1,19 +1,24 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import { GiShoppingBag } from "react-icons/gi";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
-
+import SearchInput from "../Form/SearchInput";
+import useCategory from "../../hooks/useCategory";
+import { useCart } from "../../context/cart";
+import { Badge } from "antd";
 
 const Header = () => {
-  const [auth,setAuth] = useAuth();
+  const [auth, setAuth] = useAuth();
+ const [cart] = useCart();  //only get
+  const categories = useCategory();
   const handleLogout = () => {
     setAuth({
-      ...auth,user:null,
-      token:'',
+      ...auth,
+      user: null,
+      token: "",
     });
     localStorage.removeItem("auth");
-    toast.success("Logout Successfully header js")
+    toast.success("Logout Successfully");
   };
   return (
     <>
@@ -32,70 +37,97 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-             <GiShoppingBag /> Ecommerce App
+              🛒 Ecommerce App
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <SearchInput />
               <li className="nav-item">
                 <NavLink to="/" className="nav-link ">
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/category" className="nav-link ">
-                  Category
-                </NavLink>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to={"/categories"}
+                  data-bs-toggle="dropdown"
+                >
+                  Categories
+                </Link>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to={"/categories"}>
+                      All Categories
+                    </Link>
+                  </li>
+                  {categories?.map((c) => (
+                    <li>
+                      <Link
+                        className="dropdown-item"
+                        to={`/category/${c.slug}`}
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
-             {
-              !auth.user ? (
+
+              {!auth?.user ? (
                 <>
-                 <li className="nav-item">
-                <NavLink to="/register" className="nav-link">
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link">
-                  Login
-                </NavLink>
-              </li>
+                  <li className="nav-item">
+                    <NavLink to="/register" className="nav-link">
+                      Register
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/login" className="nav-link">
+                      Login
+                    </NavLink>
+                  </li>
                 </>
-              ) : (<>
-
-<li className="nav-item dropdown">
-  <NavLink className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-{/* setting username in the navbar */}
-{auth?.user?.name}  
-
-  </NavLink>
-  <ul className="dropdown-menu">
-    <li><NavLink className="dropdown-item" to={
-      `/dashboard/${auth?.user?.role === 1 ? 'admin' : 'user'}`
-      }>dashboard</NavLink></li>
-<li>
-  <NavLink   onClick={handleLogout} to="/login" className="nav-link">
-                  Logout
-  </NavLink>
- </li>           
-
-{/*  
-    <li><NavLink className="dropdown-item" href="#">Another action</NavLink></li>
-    <li><hr className="dropdown-divider" /></li>
-    <li><NavLink className="dropdown-item" href="#">Something else here</NavLink></li>
-  */}
-  </ul>
-</li>
-
-
-
-
-          
-            
-              </>)
-             }
+              ) : (
+                <>
+                  <li className="nav-item dropdown">
+                    <NavLink
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      style={{ border: "none" }}
+                    >
+                      {auth?.user?.name}
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink
+                          to={`/dashboard/${
+                            auth?.user?.role === 1 ? "admin" : "user"
+                          }`}
+                          className="dropdown-item"
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login"
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
               <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Cart (0)
-                </NavLink>
+                <Badge count={cart?.length} showZero>
+                  <NavLink to="/cart" className="nav-link">
+                    Cart
+                  </NavLink>
+                </Badge>
               </li>
             </ul>
           </div>

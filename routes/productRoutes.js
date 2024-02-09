@@ -4,7 +4,13 @@ import {
   deleteProductController,
   getProductController,
   getSingleProductController,
+  productCategoryController,
+  productCountController,
+  productFiltersController,
+  productListController,
   productPhotoController,
+  realtedProductController,
+  searchProductController,
   updateProductController,
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
@@ -12,7 +18,7 @@ import formidable from "express-formidable";
 
 const router = express.Router();
 
-//routes for new product
+//routes
 router.post(
   "/create-product",
   requireSignIn,
@@ -20,7 +26,7 @@ router.post(
   formidable(),
   createProductController
 );
-//routes for updating product
+//routes
 router.put(
   "/update-product/:pid",
   requireSignIn,
@@ -30,17 +36,37 @@ router.put(
 );
 
 
-// no verification of user and admin needed anyone can browse products
-//get all products 
+ // this are end points 
+
+//get products
 router.get("/get-product", getProductController);
 
-//get single product
+//single product
 router.get("/get-product/:slug", getSingleProductController);
 
 //get photo
-router.get("/product-photo/:pid", productPhotoController);  //pid = product  id
+router.get("/product-photo/:pid", productPhotoController);
 
 //delete rproduct
-router.delete("/product/:pid", deleteProductController);
+router.delete("/delete-product/:pid", deleteProductController);
+
+//filter product
+router.post("/product-filters", productFiltersController);
+
+//product count
+router.get("/product-count", productCountController);
+
+//product per page
+router.get("/product-list/:page", productListController);
+
+//search product
+router.get("/search/:keyword", searchProductController);
+
+//similar product
+router.get("/related-product/:pid/:cid", realtedProductController);
+
+//category wise product
+router.get("/product-category/:slug", productCategoryController);
+
 
 export default router;

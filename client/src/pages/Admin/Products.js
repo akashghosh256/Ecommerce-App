@@ -22,7 +22,7 @@ const Products = () => {
   //lifecycle method
   useEffect(() => {
     getAllProducts();
-  }, []);
+  }, []);  //dependency object or empty array
   return (
     <Layout>
     <div className="row">
