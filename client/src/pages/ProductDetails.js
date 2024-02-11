@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
 
@@ -49,7 +49,7 @@ const ProductDetails = () => {
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
             alt={product.name}
-            height="300"
+            height="600"
             width={"350px"}
           />
         </div>
@@ -57,7 +57,7 @@ const ProductDetails = () => {
           <h1 className="text-center">Product Details</h1>
           <h6>Name : {product.name}</h6>
           <h6>Description : {product.description}</h6>
-          <h6>Price : {product.price}</h6>
+          <h6>Price : ${product.price}</h6>
           <h6>Category : {product?.category?.name}</h6>
           <button class="btn btn-secondary ms-1" onClick={() => {setCart([...cart,product])
                 toast.success('Item added to cart')}}>ADD TO CART</button>
@@ -71,6 +71,8 @@ const ProductDetails = () => {
         )}
         <div className="d-flex flex-wrap">
           {relatedProducts?.map((p) => (
+              <Link to={`/product/${p.slug}`} className="card-link"   style={{ textDecoration: 'none' }}>
+
             <div className="card m-2" style={{ width: "18rem" }}>
               <img
                 src={`/api/v1/product/product-photo/${p?._id}`}
@@ -91,6 +93,7 @@ const ProductDetails = () => {
                 toast.success('Item added to cart')}}>ADD TO CART</button>
               </div>
             </div>
+          </Link>
           ))}
         </div>
       </div>

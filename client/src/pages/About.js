@@ -1,28 +1,31 @@
 import React from "react";
 import Layout from "./../components/Layout/Layout";
+import '../styles/customeAll.css'
 
 const About = () => {
   return (
     <Layout>
-      <div className="row contactus ">
-        <div className="col-md-6 ">
+      <div className="row contactus">
+        <h1 className="text-center">About Us</h1>
+        <div className="col-md-6">
           <img
-            src="/images/about.jpeg"
+            src="/images/allround.jpg"
             alt="contactus"
+            className="about-img"
             style={{ width: "100%" }}
           />
         </div>
         <div className="col-md-4">
           <p className="text-justify mt-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            officiis obcaecati esse tempore unde ratione, eveniet mollitia,
-            perferendis eius temporibus dicta blanditiis doloremque explicabo
-            quasi sunt vero optio cum aperiam vel consectetur! Laborum enim
-            accusantium atque, excepturi sapiente amet! Tenetur ducimus aut
-            commodi illum quidem neque tempora nam.
+            Welcome to GadgetGalaxy
+
+            Greetings, fellow tech adventurers! I'm Akash Ghosh, the solo virtuoso steering the ship at Gadegetgalaxy. Armed with nothing but my trusty keyboard and an insatiable thirst for innovation, I've embarked on a solo odyssey to curate the finest array of tech marvels.
+
+            From conquering coding challenges to navigating the ever-changing seas of software development, I've honed my craft as a lone wolf developer. But fear not, for behind this solitary facade lies a powerhouse of creativity and ingenuity, ready to push the boundaries of what's possible in the digital realm.
           </p>
         </div>
       </div>
+      <div style={{ marginBottom: "100px" }}></div> {/* Add space for the footer */}
     </Layout>
   );
 };

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
-
+import "../styles/CategoryProductStyles.css";
 
 const CategoryProduct = () => {
   const params = useParams();
@@ -37,6 +37,8 @@ const CategoryProduct = () => {
           <div className="col-md-9 offset-1">
             <div className="d-flex flex-wrap">
               {products?.map((p) => (
+                              <Link to={`/product/${p.slug}`} className="card-link"   style={{ textDecoration: 'none' }}>
+
                 <div
                   className="card m-2"
                   style={{ width: "18rem" }}
@@ -65,6 +67,7 @@ const CategoryProduct = () => {
                     </button>
                   </div>
                 </div>
+                </Link>
               ))}
             </div>
             {/* <div className="m-2 p-3">

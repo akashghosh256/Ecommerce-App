@@ -24,8 +24,10 @@ import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/categoryProduct";
 import CartPage from "./pages/CartPage";
+import AdminOrders from "./pages/Admin/AdminOrders";
 
-
+// this are just page links not data point for backend server
+// it is managed by  routes/authRoute js and authController js
 function App() {
   return (
     <>
@@ -50,7 +52,7 @@ function App() {
         <Route path="admin/create-product" element={<CreateProduct/>}></Route>
         <Route path="admin/product/:slug" element={<UpdateProduct/>}></Route>
         <Route path="admin/products" element={<Products/>}></Route>
-        <Route path="admin/users" element={<Users/>}></Route>
+        <Route path="admin/orders" element={<AdminOrders/>}></Route>
 
         </Route>
 

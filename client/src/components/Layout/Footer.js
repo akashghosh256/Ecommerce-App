@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="footer">
-      <h1 className="text-center">All Right Reserved &copy; Techinfoyt</h1>
+    <div className="footer" style={{ backgroundColor: "black", color: "white" }}>
+      <h1 className="text-center">All Right Reserved &copy;<h1 className="text-center fst-italic">GADGETGALAXY</h1> </h1>
       <p className="text-center mt-3">
-        <Link to="/about">About</Link>
+        <Link to="/about" style={{ color: "white" }}>About</Link>
         |
-        <Link to="/contact">Contact</Link>
+        <Link to="/contact" style={{ color: "white" }}>Contact</Link>
         |
-        <Link to="/policy">Privacy Policy</Link>
+        <Link to="/policy" style={{ color: "white" }}>Privacy Policy</Link>
       </p>
     </div>
   );

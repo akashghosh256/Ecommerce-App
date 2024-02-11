@@ -51,7 +51,7 @@ const UpdateProduct = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something wwent wrong in getting catgeory");
+      toast.error("Something went wrong in getting catgeory");
     }
   };
 
@@ -91,13 +91,17 @@ const UpdateProduct = () => {
   //delete a product
   const handleDelete = async () => {
     try {
-      let answer = window.prompt("Are You Sure want to delete this product ? ");
-      if (!answer) return;
+      let answer = window.prompt("Type yes to delete this product ? ");
+      if (answer &&  answer.toUpperCase()  === "YES") {
       const { data } = await axios.delete(
         `/api/v1/product/delete-product/${id}`
       );
-      toast.success("Product DEleted Succfully");
+      toast.success("Product Deleted Succfully");
       navigate("/dashboard/admin/products");
+      }else{
+        toast.error("Product Not Deleted ");
+        return;
+      }
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");

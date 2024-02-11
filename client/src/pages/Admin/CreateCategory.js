@@ -45,7 +45,7 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something wwent wrong in getting catgeory");
+      toast.error("Something went wrong in getting catgeory");
     }
   };
 
@@ -77,6 +77,8 @@ const CreateCategory = () => {
   //delete category
   const handleDelete = async (pId) => {
     try {
+      let answer = window.prompt("Type yes to delete this category ? ");
+      if (answer &&  answer.toUpperCase()  === "YES") {
       const { data } = await axios.delete(
         `/api/v1/category/delete-category/${pId}`
       );
@@ -87,6 +89,12 @@ const CreateCategory = () => {
       } else {
         toast.error(data.message);
       }
+    }
+    else{
+    toast.error("category not deleted");
+    return;
+     
+    }
     } catch (error) {
       toast.error("Somtihing went wrong");
     }

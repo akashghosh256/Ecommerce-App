@@ -59,7 +59,7 @@ const Register = () => {
     <>
       <Layout>
         <form className="Register" onSubmit={handleSubmit}>
-          <h1>Register Here</h1>
+          <h1>Get on Board</h1>
           <div className="mb-3">
             <input
               type="text"
@@ -128,8 +128,19 @@ const Register = () => {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Submit
+            Sign Up
           </button>
+          <div className="mb-3">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+           Already have a Account? Sign In instead
+            </button>
+          </div>
         </form>
       </Layout>
     </>

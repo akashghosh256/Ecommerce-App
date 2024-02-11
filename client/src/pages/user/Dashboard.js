@@ -19,6 +19,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        <h4 className="fst-italic fw-light">Please note: If you're an administrator, kindly log in using your <strong>admin</strong> credentials to access additional options and functionalities.</h4>
       </div>
     </Layout>
   );

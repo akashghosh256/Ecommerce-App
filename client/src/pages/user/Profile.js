@@ -89,7 +89,7 @@ const Profile = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     className="form-control"
                     id="exampleInputPassword1"
-                    placeholder="Enter Your Password"
+                    placeholder="Enter Your New Password"
                   />
                 </div>
                 <div className="mb-3">

@@ -1,6 +1,10 @@
 import express from 'express'
 import {
-    registerController, loginController, testController, forgotPasswordController, updateProfileController
+    registerController, loginController, testController, 
+    forgotPasswordController, updateProfileController, 
+    getOrdersController,
+    getAllOrdersController,
+    orderStatusController
     
   } from "../controllers/authController.js";
  import { isAdmin, requireSignIn } from '../middlewares/authMiddleware.js';
@@ -43,9 +47,22 @@ router.post('/forgot-password', forgotPasswordController);
 
 
 //update profile video 25
-router.put('/profile', requireSignIn, updateProfileController)
+router.put('/profile', requireSignIn, updateProfileController);
 
 
+// orders route
+router.get('/orders', requireSignIn, getOrdersController);
+
+//all get orders of users
+router.get('/all-orders',requireSignIn,isAdmin, getAllOrdersController)
+
+// order status update
+router.put(
+  "/order-status/:orderId",
+  requireSignIn,
+  isAdmin,
+  orderStatusController
+);
 
 export default router;
 
