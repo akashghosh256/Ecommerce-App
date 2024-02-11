@@ -29,7 +29,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, './client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));     //for offline diable this
 
 //routes
 app.use("/api/v1/auth", authRoutes);
@@ -37,10 +37,12 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
 
-//web  hosting  route
+//web  hosting  route = for offline disable this
 app.use("*",function(req,res){
   res.sendFile(path.join(__dirname,'./client/build/index.html'));
 });
+
+
 
 // test rest api
 // app.get("/", (req, res) => {
