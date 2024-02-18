@@ -109,6 +109,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+ height: 65vh;
+ flex-direction:  column;
+}
+
+.login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
  height: 55vh;
  flex-direction:  column;
 }

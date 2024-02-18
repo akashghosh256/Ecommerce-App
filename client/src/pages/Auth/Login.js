@@ -26,7 +26,7 @@ const Login = () => {
     // API-----------------------------------------------
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/auth/login`,
+        "/api/v1/auth/login",
         { email, password }
       );
       if (res && res.data.success) {
@@ -44,13 +44,13 @@ const Login = () => {
       }
     } catch (err) {
       console.log(err);
-      toast.error("something went wrong Register js");
+      toast.error("something went wrong login js");
     }
   };
   return (
     <>
       <Layout>
-        <form className="Register" onSubmit={handleSubmit}>
+        <form className="login" onSubmit={handleSubmit}>
           <h1>Hello there, welcome back</h1>
 
           <div className="mb-3">

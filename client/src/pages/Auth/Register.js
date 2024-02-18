@@ -33,7 +33,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/auth/register`,
+        "/api/v1/auth/register",
         { name, 
           email, 
           password, 
@@ -127,18 +127,20 @@ const Register = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
-            Sign Up
-          </button>
+          <div className="mb-3">
+            <button type="submit" className="btn btn-primary">
+              Sign Up
+            </button>
+          </div>
           <div className="mb-3">
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-primary py-2 px-4"
               onClick={() => {
                 navigate("/login");
               }}
             >
-           Already have a Account? Sign In instead
+              Already have an Account? Sign In instead
             </button>
           </div>
         </form>

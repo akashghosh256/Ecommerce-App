@@ -24,8 +24,8 @@ connectDB();
 
 
 //esmodule fix for deplyment
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 
 // rest object
@@ -35,7 +35,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, "./client/build"))); //for offline diable this
+//app.use(express.static(path.join(__dirname, "./client/build"))); //for offline diable this
 
 //routes
 app.use("/api/v1/auth", authRoutes);
@@ -43,9 +43,9 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
 //web  hosting  route = for offline disable this
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 // test rest api
 // app.get("/", (req, res) => {

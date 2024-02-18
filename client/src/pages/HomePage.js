@@ -115,11 +115,13 @@ const HomePage = () => {
        {/* banner image */}
        <img
         src="/images/rogbb.jpg"
+     
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
       />
       {/* banner image */}
+      
       <div className="container-fluid row mt-2">
         <div className="col-md-2">
           <h4 className="text-center">Filter By Category</h4>
