@@ -6,6 +6,7 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
+import Loading from "./Loading"
 import "../styles/Homepage.css";
 
 const HomePage = () => {
@@ -19,15 +20,35 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [noProductsAvailable, setNoProductsAvailable] = useState(false);
+ // const [loading, setLoading] = useState(true);
 
 
+const handleInfiniteScroll =async() => {
 
-
+// console.log("scroll height " + document.documentElement.scrollHeight);
+// console.log("Inner Height "+ window.innerHeight);
+// console.log("scroll Top " + document.documentElement.scrollTop);
+// scroll top  + Inner height >= scroll height
+try{
+  if(window.innerHeight + document.documentElement.scrollTop + 5 >= document.documentElement.scrollHeight ){
+    setLoading(true);
+    setPage((prev) => prev+1);
+  }
+  }
+  catch(err){
+    console.log(err);
+    return err;
+  }
+}
 
  
 
 
+useEffect(() => {
+  window.addEventListener("scroll",handleInfiniteScroll);
+  return () => window.removeEventListener("scroll",handleInfiniteScroll);
 
+},[]);
 
 
 
@@ -55,7 +76,10 @@ const HomePage = () => {
       setLoading(true);
       const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
       setLoading(false);
-      setProducts(data.products);
+     // setProducts(data.products);
+    // setProducts((prev) => [...prev, ...data]);
+    setProducts([...products, ...data?.products]);
+
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -149,7 +173,8 @@ const HomePage = () => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://i.ytimg.com/vi/OFvXuyITwBI/sddefault.jpg"
+            //  src="https://i.ytimg.com/vi/OFvXuyITwBI/sddefault.jpg"
+            src="../images/login.jpg"
               className="banner-img d-block w-100"
               alt="bannerimage1"
               width={"100%"}
@@ -300,7 +325,7 @@ const HomePage = () => {
               </Link>
             ))}
           </div>
-          <div className="m-2 p-3">
+          {/* <divxx className="m-2 p-3">
             {products && products.length < total && (
               <button
                 className="btn btn-warning"
@@ -312,11 +337,21 @@ const HomePage = () => {
                 {loading ? "Loading ..." : "Loadmore"}
               </button>
             )}
-          </div>
+          </divxx> */}
         </div>
       </div>
+      {loading && <Loading />}
     </Layout>
   );
 };
 
 export default HomePage;
+
+
+
+
+
+
+
+
+

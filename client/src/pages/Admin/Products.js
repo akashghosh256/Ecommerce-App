@@ -60,13 +60,14 @@ const Products = () => {
                 style={{
                   width: "100%",
                   height: "auto",
-                  maxHeight: "280px",
+                  maxHeight: "400px",
+                  
                 }}
                 alt={p.name}
               />
               <div className="card-body">
                 <h5 className="card-title">{p.name.substring(0,40)}</h5>
-                <p className="card-text">{p.description.substring(0,150)}</p>
+                <p className="card-text">{p.description.substring(0,40)}</p>
               </div>
             </div>
           </Link>
