@@ -8,6 +8,13 @@ const Categories = () => {
     <Layout title={"All Categories"}>
       <div className="container">
         <div className="row">
+
+<div className="text-center">
+  <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#333' }}>All Categories</h1>
+  <p style={{ fontSize: '1.2rem', color: '#666' }}>All categories are listed below</p>
+</div>
+
+
           {categories.map((c) => (
             
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer" style={{ backgroundColor: "black", color: "white" }}>
-      <h1 className="text-center">All Right Reserved &copy;<h1 className="text-center fst-italic">GADGETGALAXY</h1> </h1>
+      <h1 className="text-center">Akash Ghosh &copy;<h1 className="text-center fst-italic">GADGETGALAXY</h1> </h1>
       <p className="text-center mt-3">
         <Link to="/about" style={{ color: "white" }}>About</Link>
         |

@@ -5,12 +5,10 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
 
-
-
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const [cart,setCart] = useCart();
+  const [cart, setCart] = useCart();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -34,7 +32,7 @@ const ProductDetails = () => {
   const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/related-product/${pid}/${cid}`   //api end point
+        `/api/v1/product/related-product/${pid}/${cid}` //api end point
       );
       setRelatedProducts(data?.products);
     } catch (error) {
@@ -49,8 +47,8 @@ const ProductDetails = () => {
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
             alt={product.name}
-            height="600"
-            width={"350px"}
+            // height="600"
+            // width={"350px"}
           />
         </div>
         <div className="col-md-6 ">
@@ -59,8 +57,15 @@ const ProductDetails = () => {
           <h6>Description : {product.description}</h6>
           <h6>Price : ${product.price}</h6>
           <h6>Category : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1" onClick={() => {setCart([...cart,product])
-                toast.success('Item added to cart')}}>ADD TO CART</button>
+          <button
+            class="btn btn-secondary ms-1"
+            onClick={() => {
+              setCart([...cart, product]);
+              toast.success("Item added to cart");
+            }}
+          >
+            ADD TO CART
+          </button>
         </div>
       </div>
       <hr />
@@ -71,15 +76,28 @@ const ProductDetails = () => {
         )}
         <div className="d-flex flex-wrap">
           {relatedProducts?.map((p) => (
-              <Link to={`/product/${p.slug}`} className="card-link"   style={{ textDecoration: 'none' }}>
-
-            <div className="card m-2" style={{ width: "18rem" }}>
-              <img
+            <Link
+              to={`/product/${p.slug}`}
+              className="card-link"
+              style={{ textDecoration: "none" }}
+            >
+              <div className="card cardpro m-2" style={{ width: "18rem" }}>
+                {/* <img
                 src={`/api/v1/product/product-photo/${p?._id}`}
                 className="card-img-top"
                 alt={p.name}
-              />
-              <div className="card-body">
+              /> */}
+                <img
+                  src={`/api/v1/product/product-photo/${p._id}`}
+                  className="card-img-top"
+                  style={{
+                        width: "100%",
+                        height: "auto",
+                        maxHeight: "280px",
+                      }}
+                  alt={p.name}
+                />
+                {/* <divx className="card-body">
                 <h5 className="card-title">{p.name}</h5>
                 <p className="card-text">{p.description.substring(0, 30)}...</p>
                 <p className="card-text"> $ {p.price}</p>
@@ -91,9 +109,39 @@ const ProductDetails = () => {
                 </button>
                 <button class="btn btn-secondary ms-1" onClick={() => {setCart([...cart,p])
                 toast.success('Item added to cart')}}>ADD TO CART</button>
+              </divx> */}
+                <div className="card-body d-flex flex-column justify-content-between">
+                  <h5 className="card-title">{p.name.substring(0, 40)}</h5>
+                  <p className="card-text">
+                    {p.description.substring(0, 30)}...
+                  </p>
+                  <p className="card-text">$ {p.price}</p>
+                  <div className="mt-auto">
+                    {" "}
+                    {/* This div ensures buttons stay at the bottom */}
+                    <button
+                      className="btn btn-primary ms-1"
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More Details
+                    </button>
+                    <button
+                      className="btn btn-secondary ms-1"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("Item added to cart");
+                      }}
+                    >
+                      ADD TO CART
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
           ))}
         </div>
       </div>

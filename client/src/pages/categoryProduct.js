@@ -40,17 +40,22 @@ const CategoryProduct = () => {
                               <Link to={`/product/${p.slug}`} className="card-link"   style={{ textDecoration: 'none' }}>
 
                 <div
-                  className="card m-2"
+                  className="card cardpro m-2"
                   style={{ width: "18rem" }}
                   key={p._id}
                 >
                   <img
                     src={`/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      maxHeight: "280px",
+                    }}
                     alt={p.name}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
+                    <h5 className="card-title">{p.name.substring(0, 40)}</h5>
                     <p className="card-text">
                       {p.description.substring(0, 30)}...
                     </p>

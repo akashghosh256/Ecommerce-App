@@ -99,3 +99,12 @@
     font-weight: bold;
     font-size: 20px !important;
   }
+
+
+
+  .cardpro {
+    width: 200px; /* Adjust the width as per your requirement */
+    height: 500px; /* Adjust the height as per your requirement */
+    /* Add any other styling you need */
+  }
+  

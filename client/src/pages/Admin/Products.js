@@ -5,8 +5,22 @@ import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+
+
+
+
 const Products = () => {
   const [products, setProducts] = useState([]);
+
+
+
+  const customStyles = `
+  .cardpro {
+    width: 400px;
+    height: 500px;
+    /* Add any other styling you need */
+  }
+`;
 
   //getall products
   const getAllProducts = async () => {
@@ -25,6 +39,7 @@ const Products = () => {
   }, []);  //dependency object or empty array
   return (
     <Layout>
+       <style>{customStyles}</style> {/* Inject custom CSS */}
     <div className="row">
   <div className="col-md-3">
     <AdminMenu />
@@ -38,15 +53,20 @@ const Products = () => {
             to={`/dashboard/admin/product/${p.slug}`}  //get single product
             className="product-link"
           >
-            <div className="card">
+            <div className="card cardpro">
               <img
                 src={`/api/v1/product/product-photo/${p._id}`}
                 className="card-img-top"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  maxHeight: "280px",
+                }}
                 alt={p.name}
               />
               <div className="card-body">
-                <h5 className="card-title">{p.name}</h5>
-                <p className="card-text">{p.description}</p>
+                <h5 className="card-title">{p.name.substring(0,40)}</h5>
+                <p className="card-text">{p.description.substring(0,150)}</p>
               </div>
             </div>
           </Link>
@@ -61,3 +81,6 @@ const Products = () => {
 };
 
 export default Products;
+
+
+
