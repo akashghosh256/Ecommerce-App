@@ -1,8 +1,8 @@
-
-/* Default height */
+/* 
+Default height */
 .banner-img {
   margin-top: 4px;
-  height: 400px;
+   height: 100px;
 }
 
 /* Media query for phones (up to 576px) */
@@ -15,7 +15,7 @@
 /* Media query for laptops and larger screens */
 @media (min-width: 992px) {
   .banner-img {
-    height: 400px; /* Adjust height for laptops and larger screens */
+    height: 600px; /* Adjust height for laptops and larger screens */
   }
 }
 

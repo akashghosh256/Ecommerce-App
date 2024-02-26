@@ -20,7 +20,6 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [noProductsAvailable, setNoProductsAvailable] = useState(false);
- // const [loading, setLoading] = useState(true);
 
 
 const handleInfiniteScroll =async() => {
@@ -167,31 +166,29 @@ useEffect(() => {
       /> */}
       <div
         id="carouselExampleFade"
-        className="carousel slide carousel-fade"
+        className="carousel slide carousel-fade "
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner">
+        <div className="carousel-inner banner-img ">
           <div className="carousel-item active">
-            <img
-            //  src="https://i.ytimg.com/vi/OFvXuyITwBI/sddefault.jpg"
-            src="../images/login.jpg"
-              className="banner-img d-block w-100"
-              alt="bannerimage1"
-              width={"100%"}
-            />
+          <img src="https://www.techadvisor.com/wp-content/uploads/2022/06/google_pixel_6_6_pro_collage_official_press_image.jpg?quality=50&strip=all" 
+             className="banner-img " 
+             alt="bannerimage1" 
+             style={{  width: '100%' }} />
+
           </div>
-          <div className="carousel-item">
+          <div className="carousel-item banner-img ">
             <img
-              src="https://i.ytimg.com/vi/QKyul7puruQ/maxresdefault.jpg"
-              className="banner-img d-block w-100"
+              src="https://9to5mac.com/wp-content/uploads/sites/6/2023/01/m2-macbook-pros-rumor.jpg?quality=82&strip=all&w=1024"
+              className="banner-img "
               alt="bannerimage2"
               width={"100%"}
             />
           </div>
-          <div className="carousel-item">
+          <div className="carousel-item banner-img ">
             <img
-              src="https://i.ytimg.com/vi/M53-eAmIWZA/maxresdefault.jpg"
-              className="banner-img d-block w-100"
+              src="https://i.ytimg.com/vi/dJCA_RxBXuA/maxresdefault.jpg"
+              className="banner-img "
               alt="bannerimage3"
               width={"100%"}
             />
