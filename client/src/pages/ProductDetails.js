@@ -11,6 +11,11 @@ const ProductDetails = () => {
   const [cart, setCart] = useCart();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
 
   //initalp details
   useEffect(() => {

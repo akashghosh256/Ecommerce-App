@@ -6,7 +6,7 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
-import Loading from "./Loading"
+import Loading from "./Loading";
 import "../styles/Homepage.css";
 
 const HomePage = () => {
@@ -20,38 +20,35 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [noProductsAvailable, setNoProductsAvailable] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
 
-const handleInfiniteScroll =async() => {
+  const handleInfiniteScroll = async () => {
+    // console.log("scroll height " + document.documentElement.scrollHeight);
+    // console.log("Inner Height "+ window.innerHeight);
+    // console.log("scroll Top " + document.documentElement.scrollTop);
+    // scroll top  + Inner height >= scroll height
+    try {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 5 >=
+        document.documentElement.scrollHeight
+      ) {
+        setLoading(true);
+        setPage((prev) => prev + 1);
+      }
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  };
 
-// console.log("scroll height " + document.documentElement.scrollHeight);
-// console.log("Inner Height "+ window.innerHeight);
-// console.log("scroll Top " + document.documentElement.scrollTop);
-// scroll top  + Inner height >= scroll height
-try{
-  if(window.innerHeight + document.documentElement.scrollTop + 5 >= document.documentElement.scrollHeight ){
-    setLoading(true);
-    setPage((prev) => prev+1);
-  }
-  }
-  catch(err){
-    console.log(err);
-    return err;
-  }
-}
-
- 
-
-
-useEffect(() => {
-  window.addEventListener("scroll",handleInfiniteScroll);
-  return () => window.removeEventListener("scroll",handleInfiniteScroll);
-
-},[]);
-
-
-
-
+  useEffect(() => {
+    window.addEventListener("scroll", handleInfiniteScroll);
+    return () => window.removeEventListener("scroll", handleInfiniteScroll);
+  }, []);
 
   //get all category
   const getAllCategory = async () => {
@@ -75,10 +72,9 @@ useEffect(() => {
       setLoading(true);
       const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
       setLoading(false);
-     // setProducts(data.products);
-    // setProducts((prev) => [...prev, ...data]);
-    setProducts([...products, ...data?.products]);
-
+      // setProducts(data.products);
+      // setProducts((prev) => [...prev, ...data]);
+      setProducts([...products, ...data?.products]);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -171,11 +167,12 @@ useEffect(() => {
       >
         <div className="carousel-inner banner-img ">
           <div className="carousel-item active">
-          <img src="https://www.techadvisor.com/wp-content/uploads/2022/06/google_pixel_6_6_pro_collage_official_press_image.jpg?quality=50&strip=all" 
-             className="banner-img " 
-             alt="bannerimage1" 
-             style={{  width: '100%' }} />
-
+            <img
+              src="https://www.techadvisor.com/wp-content/uploads/2022/06/google_pixel_6_6_pro_collage_official_press_image.jpg?quality=50&strip=all"
+              className="banner-img "
+              alt="bannerimage1"
+              style={{ width: "100%" }}
+            />
           </div>
           <div className="carousel-item banner-img ">
             <img
@@ -279,7 +276,7 @@ useEffect(() => {
               >
                 <div className="container d-flex justify-content-center">
                   <div className="card cardpro m-2" style={{ width: "18rem" }}>
-                    <img
+                    {/* <img
                       src={`/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       style={{
@@ -288,12 +285,49 @@ useEffect(() => {
                         maxHeight: "280px",
                       }}
                       alt={p.name}
-                    />
-                    <div className="card-body d-flex flex-column justify-content-between">
-                      <h5 className="card-title">{p.name.substring(0, 40)}</h5>
+                    /> */}
+
+{!imageLoaded && (
+        <div className="skeleton skeleton-image" style={{ width: '100%', height: '280px' }}> </div>
+      )}
+      <img
+        src={`/api/v1/product/product-photo/${p._id}`}
+        className={`card-img-top ${imageLoaded ? '' : 'hidden'}`}
+        style={{
+          width: '100%',
+          height: 'auto',
+          maxHeight: '280px',
+        }}
+        alt={p.name}
+        onLoad={handleImageLoad}
+      />
+ <div className="card-body d-flex flex-column justify-content-between">
+        <h5 className="card-title">
+          {!imageLoaded && <div className="skeleton skeleton-text"></div>}
+          {p.name.substring(0, 40)}
+        </h5>
+        <p className="card-text">
+          {!imageLoaded && (
+            <>
+              <div className="skeleton skeleton-text"></div>
+              <div className="skeleton skeleton-text"></div>
+            </>
+          )}
+          {p.description.substring(0, 30)}...
+        </p>
+    
+
+
+                    {/* <div className="card-body d-flex flex-column justify-content-between">
+                      <h5 className="card-title">
+                        <div className="skeleton skeleton-text"></div>
+                        {p.name.substring(0, 40)}
+                      </h5>
                       <p className="card-text">
+                        <div className="skeleton skeleton-text"></div>
+                        <div className="skeleton skeleton-text"></div>
                         {p.description.substring(0, 30)}...
-                      </p>
+                      </p> */}
                       <p className="card-text">$ {p.price}</p>
                       <div className="mt-auto">
                         <button
@@ -343,12 +377,3 @@ useEffect(() => {
 };
 
 export default HomePage;
-
-
-
-
-
-
-
-
-
