@@ -172,6 +172,7 @@ const HomePage = () => {
               className="banner-img "
               alt="bannerimage1"
               style={{ width: "100%" }}
+              loading="lazy"
             />
           </div>
           <div className="carousel-item banner-img ">
@@ -180,6 +181,7 @@ const HomePage = () => {
               className="banner-img "
               alt="bannerimage2"
               width={"100%"}
+              loading="lazy"
             />
           </div>
           <div className="carousel-item banner-img ">
@@ -188,6 +190,7 @@ const HomePage = () => {
               className="banner-img "
               alt="bannerimage3"
               width={"100%"}
+              loading="lazy"
             />
           </div>
         </div>
@@ -298,6 +301,7 @@ const HomePage = () => {
           height: 'auto',
           maxHeight: '280px',
         }}
+        loading="lazy"
         alt={p.name}
         onLoad={handleImageLoad}
       />
