@@ -40,4 +40,5 @@ Start the server
 ```
 
 
-![Uploading webhome.png…]()
+![phone2](https://github.com/akashghosh256/Ecommerce-App/assets/93257481/ca1690bd-fb83-4fd4-915d-ceddb30e8abf)
+
