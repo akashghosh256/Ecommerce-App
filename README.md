@@ -1,6 +1,4 @@
 # GadgetGalaxy E-Commerce Website
-Try Now -> https://gadgetgalaxyecommerce.onrender.com/
-
 
 GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stack. It offers a user-friendly platform for buying gadgets and electronics, with features such as cart management, real-time order tracking, and an intuitive admin panel for seamless product and category updates.
 
@@ -40,7 +38,15 @@ GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stac
 <img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone3.jpg" width="40%" height="34%">
 
 
+## Try Now -> https://gadgetgalaxyecommerce.onrender.com/
 
+Admin Credentials:
+Email: admin@admin
+Password: admin
+
+User Credentials:
+Email: user@user
+Password: user
 
 
 ## Features
