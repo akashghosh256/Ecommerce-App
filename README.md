@@ -4,6 +4,45 @@ Try Now -> https://gadgetgalaxyecommerce.onrender.com/
 
 GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stack. It offers a user-friendly platform for buying gadgets and electronics, with features such as cart management, real-time order tracking, and an intuitive admin panel for seamless product and category updates.
 
+
+## Screenshots
+## Filtering products by category as well as by price
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/filter.png)
+
+## Admin order status management option for users-orders placed
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/orderAdmin.png)
+
+
+
+## Admin product management option like photos, price, description etc
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/manageproduct.png)
+
+## Admin category management
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/newcategory.png)
+
+
+## Admin adding new product
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/createproduct.png)
+
+
+## Added features such as Infinite Scroll and skeleton effect for loading new products
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/infinitescroll.png)
+
+
+## User payment gateway
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/payment.png)
+
+
+## Responsive website for mobile device users, featuring a search option for products.
+
+<img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone2.jpg" width="40%" height="34%">
+
+<img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone3.jpg" width="40%" height="34%">
+
+
+
+
+
 ## Features
 
 - **Cart Management**: Users can easily add and remove items from their shopping carts.
@@ -33,15 +72,15 @@ Install dependencies
   npm install
 ```
 
-Start the server
+Start the server and client together
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
 
 
-## Screenshots
 
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/webhome.png)
+
+
 
