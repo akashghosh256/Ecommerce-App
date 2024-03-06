@@ -35,6 +35,7 @@ GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stac
 
 <img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone2.jpg" width="40%" height="34%">
 
+## User can check order status
 <img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone3.jpg" width="40%" height="34%">
 
 
