@@ -1,4 +1,4 @@
-# GadgetGalaxy E-Commerce Website
+# GadgetGalaxy
 
 GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stack. It offers a user-friendly platform for buying gadgets and electronics, with features such as cart management, real-time order tracking, and an intuitive admin panel for seamless product and category updates.
 
