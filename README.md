@@ -47,7 +47,6 @@ GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stac
 <img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone3.jpg" width="40%" height="34%">
 
 
-## Try Now -> https://gadgetgalaxyecommerce.onrender.com/
 
 Admin Credentials:
 Email: admin@admin
